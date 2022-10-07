@@ -1,0 +1,9 @@
+server:
+  port: 8099
+spring:
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/grade_study?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&useSSL=true
+    username: root
+    password: wac62461818
+    type: com.alibaba.druid.pool.DruidDataSource
