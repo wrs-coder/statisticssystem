@@ -9,21 +9,18 @@ import java.util.*;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        //读年级总名单
+        // 读年级总名单
         ReadExcel readExcel = new ReadExcel();
         List studentList = readExcel.excelRead("./src/main/resources/static/ExcelDate/GradeList.xlsx", 244);
-//        System.out.println(studentList);
-        //传入导出的csv数据
+        // 传入导出的csv数据
         ReadCsv readCsv = new ReadCsv();
         List<String[]> CSVList = readCsv.csvRead("./src/main/resources/static/CSV/test.csv");
-//        System.out.println(CSVList);
-        //读出csv中已完成名单数据
+        // 读出csv中已完成名单数据
         List finishList = new ArrayList();
         for (String[] strings : CSVList) {
             finishList.add(Arrays.asList(strings).get(2));
         }
-        //System.out.println(finishList);
-        //创建未完成名单
+        // 创建未完成名单
         List<String> unFinishList = new ArrayList<>();
         for (Object str : studentList) {
             if (!finishList.contains(str)) {
@@ -31,7 +28,7 @@ public class App {
             }
         }
         System.out.println(unFinishList);
-        //查询未完成同学所有信息
+        // 查询未完成同学所有信息
         SqlDB sqlDB = new SqlDB();
         String sql = "SELECT * FROM studentList WHERE stu_name = ";
         List<Map<String, Object>> list = new ArrayList<>();
@@ -50,7 +47,7 @@ public class App {
             sqlDB.close();
         }
         System.out.println(list);
-        //导出未完成名单Excel格式文件
+        // 导出未完成名单Excel格式文件
         WriteExcel writeExcel = new WriteExcel();
         writeExcel.writeExcel(list);
     }
