@@ -27,7 +27,7 @@ public class App {
                 unFinishList.add((String) str);
             }
         }
-        System.out.println(unFinishList);
+        System.out.println("未完成名单:" + unFinishList);
         // 查询未完成同学所有信息
         SqlDB sqlDB = new SqlDB();
         String sql = "SELECT * FROM studentList WHERE stu_name = ";
